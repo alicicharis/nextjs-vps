@@ -1,0 +1,3 @@
+harislearn.com {
+  reverse_proxy nextjs-app:3000
+}

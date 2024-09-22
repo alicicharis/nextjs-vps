@@ -1,0 +1,32 @@
+services:
+  nextjs-app:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - nextjs-network
+    restart: always
+
+  caddy:
+    image: caddy/caddy:latest
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - nextjs-network
+    depends_on:
+      - nextjs-app
+    restart: always
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  nextjs-network:
+    driver: bridge
