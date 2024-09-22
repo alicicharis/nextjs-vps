@@ -36,6 +36,6 @@ EXPOSE 3000
 
 ENV PORT=3000
 
-ENV HOSTNAME="harislearn"
+ENV HOSTNAME="www.harislearn.com"
 
 CMD ["node", "server.js"]
